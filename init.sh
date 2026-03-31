@@ -16,10 +16,11 @@ curl -fsSL https://raw.githubusercontent.com/s-h-a-d-o-w/my-os-basics/refs/heads
 
 # nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
-source ~/.zshrc
+source ~/.bashrc
 nvm install --lts
 
 ## pure prompt - HAS TO BE AFTER NVM/NODE INSTALL!
 npm install --global pure-prompt
+echo 'fpath+=("$(npm root -g)/pure-prompt/functions")' >> ~/.zshrc
 echo "autoload -U promptinit; promptinit" >> ~/.zshrc
 echo "prompt pure" >> ~/.zshrc
