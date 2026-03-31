@@ -15,9 +15,11 @@ sed -i 's/^plugins=(.*)/plugins=(git direnv kubectl zsh-autosuggestions zsh-synt
 curl -fsSL https://raw.githubusercontent.com/s-h-a-d-o-w/my-os-basics/refs/heads/main/aliases.zsh -o "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/aliases.zsh"
 
 # nvm
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
-source "$HOME/.nvm/nvm.sh"
-nvm install --lts
+if [[ "$1" != "no-nvm" ]]; then
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
+  source "$HOME/.nvm/nvm.sh"
+  nvm install --lts
+fi
 
 ## pure prompt - HAS TO BE AFTER NVM/NODE INSTALL!
 npm install --global pure-prompt
