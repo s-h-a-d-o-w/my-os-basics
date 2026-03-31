@@ -12,14 +12,14 @@ sed -i 's/^plugins=(.*)/plugins=(git direnv kubectl zsh-autosuggestions zsh-synt
 # chsh -s /usr/bin/zsh
 
 # aliases
-curl -fsSL https://.../aliases.zsh -o "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/aliases.zsh"
+curl -fsSL https://raw.githubusercontent.com/s-h-a-d-o-w/my-os-basics/refs/heads/main/aliases.zsh -o "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/aliases.zsh"
 
 # nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
 source ~/.zshrc
 nvm install --lts
 
-## Pure?! HAS TO BE AFTER NVM/NODE INSTALL!
+## pure prompt - HAS TO BE AFTER NVM/NODE INSTALL!
 npm install --global pure-prompt
 echo "autoload -U promptinit; promptinit" >> ~/.zshrc
 echo "prompt pure" >> ~/.zshrc

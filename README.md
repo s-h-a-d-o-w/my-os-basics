@@ -3,7 +3,7 @@ The only reason that this is public is so that I can fetch the files easily. Not
 # Linux
 
 ```bash
-curl -o- https://thisrepo/init.sh | bash
+curl -o- https://raw.githubusercontent.com/s-h-a-d-o-w/my-os-basics/refs/heads/main/init.sh | bash
 ```
 
 # Windows
