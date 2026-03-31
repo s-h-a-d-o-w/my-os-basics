@@ -1,0 +1,30 @@
+{
+  // https://containers.dev/templates
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:24",
+
+  // https://containers.dev/features
+  "features": {
+    "ghcr.io/devcontainers-extra/features/direnv:1": {},
+    "ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {},
+    "ghcr.io/devcontainers-extra/features/pulumi:1": {}
+  },
+
+  "postCreateCommand": "curl -o- https://thisrepo/init.sh | bash",
+
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "zsh"
+      },
+      "extensions": [
+        "formulahendry.auto-rename-tag",
+        "ms-playwright.playwright",
+        "oxc.oxc-vscode",
+        "rimuruchan.vscode-fix-checksums-next",
+        "s-h-a-d-o-w.serenade",
+        "s-h-a-d-o-w.theme-notepadplusplusremixed",
+        "s-h-a-d-o-w.vscode-custom-css"
+      ]
+    }
+  }
+}
