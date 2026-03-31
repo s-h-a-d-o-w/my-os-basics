@@ -16,7 +16,7 @@ curl -fsSL https://raw.githubusercontent.com/s-h-a-d-o-w/my-os-basics/refs/heads
 
 # nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
-source ~/.bashrc
+source "$HOME/.nvm/nvm.sh"
 nvm install --lts
 
 ## pure prompt - HAS TO BE AFTER NVM/NODE INSTALL!
