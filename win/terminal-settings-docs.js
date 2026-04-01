@@ -8,7 +8,7 @@
 
 #000080	Blue (dark)	Built-in constants
 #0000FF	Bright Blue	Keywords, storage types, HTML tags, CSS ID, operator (new)
-#383838	Bright Black/Gray
+#A8A8A8	Bright Black/Gray
 #00D4D4	Bright Cyan	HTML embedded Ruby (background)
 #16C60C	Bright Green	DOESN'T EXIST IN VSCODE THEME
 #FF00FF	Bright Purple	Function names
