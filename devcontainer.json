@@ -1,5 +1,5 @@
 {
-  // https://containers.dev/templates
+  // https://github.com/devcontainers/images/tree/main/src or https://containers.dev/templates
   "image": "mcr.microsoft.com/devcontainers/javascript-node:24",
 
   // https://containers.dev/features

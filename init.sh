@@ -15,7 +15,7 @@ sudo apt update
 sudo apt upgrade -y
 
 # common tools
-sudo apt install -y vim git
+sudo apt install -y vim git direnv
 
 # zsh
 sudo apt install -y zsh
