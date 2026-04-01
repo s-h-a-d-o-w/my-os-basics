@@ -25,10 +25,25 @@ fi
 
 ## pure prompt - HAS TO BE AFTER NVM/NODE INSTALL!
 npm install --global pure-prompt
-echo 'fpath+=("$(npm root -g)/pure-prompt/functions")' >> ~/.zshrc
-echo "autoload -U promptinit; promptinit" >> ~/.zshrc
-echo "prompt pure" >> ~/.zshrc
-echo "prompt_newline='%666v' # Single line mode" >> ~/.zshrc
+cat >> ~/.zshrc << 'EOF'
+
+# pure prompt
+fpath+=("$(npm root -g)/pure-prompt/functions")
+autoload -U promptinit; promptinit
+prompt pure
+prompt_newline='%666v' # Single line mode
+EOF
 if [[ "$1" != "no-user-host-in-prompt" ]]; then
   echo "psvar[13]= # Don't show user@host in prompt" >> ~/.zshrc
 fi
+
+## zsh mods
+cat >> ~/.zshrc << 'EOF'
+
+# history substring search
+HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=true
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+bindkey "${terminfo[kcuu1]}" history-substring-search-up
+bindkey "${terminfo[kcud1]}" history-substring-search-down
+EOF
