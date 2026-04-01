@@ -46,4 +46,7 @@ bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 bindkey "${terminfo[kcuu1]}" history-substring-search-up
 bindkey "${terminfo[kcud1]}" history-substring-search-down
+
+# misc
+export LS_COLORS="ow=30;101:tw=30;101" # red background for directories with dangerous permissions
 EOF

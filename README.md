@@ -11,7 +11,3 @@ curl -o- https://raw.githubusercontent.com/s-h-a-d-o-w/my-os-basics/refs/heads/m
 ## Terminal
 
 Press `Ctrl+,` to open the settings. Click on the gear icon in the bottom left corner to open the settings file. Then just copy/paste `win/terminal-settings.json`.
-
-### WSL
-
-Add `export LS_COLORS="ow=30;101:tw=30;101"` to the `~/.bashrc` or `~/.zshrc` file. Otherwise, directories with dangerous permissions will look awful.
