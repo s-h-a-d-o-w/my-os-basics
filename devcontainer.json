@@ -9,7 +9,7 @@
     "ghcr.io/devcontainers-extra/features/pulumi:1": {}
   },
 
-  "postCreateCommand": "curl -o- https://raw.githubusercontent.com/s-h-a-d-o-w/my-os-basics/refs/heads/main/init.sh | bash -s -- no-nvm",
+  "postCreateCommand": "curl -o- https://raw.githubusercontent.com/s-h-a-d-o-w/my-os-basics/refs/heads/main/init.sh | bash -s -- no-nvm no-user-host-in-prompt",
 
   "customizations": {
     "vscode": {
