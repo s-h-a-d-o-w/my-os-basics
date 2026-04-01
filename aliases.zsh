@@ -1,5 +1,7 @@
 alias a=alias
 alias ag="alias | grep"
+alias cz="cat ~/.zshrc"
+alias cb="cat ~/.bashrc"
 alias c=clear
 alias e=explorer.exe . # WSL
 alias rmn="rm -rf node_modules"
