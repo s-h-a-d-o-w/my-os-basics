@@ -1,8 +1,12 @@
 #!/bin/bash
 
+NO_DIRENV=false
 NO_NVM=false
 HIDE_USER_HOST_IN_PROMPT=false
 for arg in "$@"; do
+  if [[ "$arg" == "no-direnv" ]]; then
+    NO_DIRENV=true
+  fi
   if [[ "$arg" == "no-nvm" ]]; then
     NO_NVM=true
   fi
@@ -15,7 +19,7 @@ sudo apt update
 sudo apt upgrade -y
 
 # common tools
-sudo apt install -y vim git direnv
+sudo apt install -y vim git
 
 # zsh
 sudo apt install -y zsh
@@ -23,7 +27,11 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search
 # git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-sed -i 's/^plugins=(.*)/plugins=(git direnv kubectl zsh-autosuggestions zsh-history-substring-search)/' ~/.zshrc
+if $NO_DIRENV; then
+  sed -i 's/^plugins=(.*)/plugins=(git kubectl zsh-autosuggestions zsh-history-substring-search)/' ~/.zshrc
+else
+  sed -i 's/^plugins=(.*)/plugins=(git direnv kubectl zsh-autosuggestions zsh-history-substring-search)/' ~/.zshrc
+fi
 
 # my custom aliases
 curl -fsSL https://raw.githubusercontent.com/s-h-a-d-o-w/my-os-basics/refs/heads/main/aliases.zsh -o ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/aliases.zsh
