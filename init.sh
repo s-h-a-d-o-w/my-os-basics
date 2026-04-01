@@ -1,4 +1,16 @@
 #!/bin/bash
+
+NO_NVM=false
+HIDE_USER_HOST_IN_PROMPT=false
+for arg in "$@"; do
+  if [[ "$arg" == "no-nvm" ]]; then
+    NO_NVM=true
+  fi
+  if [[ "$arg" == "no-user-host-in-prompt" ]]; then
+    HIDE_USER_HOST_IN_PROMPT=true
+  fi
+done
+
 sudo apt update
 sudo apt upgrade -y
 
@@ -17,7 +29,7 @@ sed -i 's/^plugins=(.*)/plugins=(git direnv kubectl zsh-autosuggestions zsh-hist
 curl -fsSL https://raw.githubusercontent.com/s-h-a-d-o-w/my-os-basics/refs/heads/main/aliases.zsh -o ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/aliases.zsh
 
 # nvm
-if [[ "$1" != "no-nvm" ]]; then
+if ! $NO_NVM; then
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
   source "$HOME/.nvm/nvm.sh"
   nvm install --lts
@@ -33,7 +45,7 @@ autoload -U promptinit; promptinit
 prompt pure
 prompt_newline='%666v' # Single line mode
 EOF
-if [[ "$1" != "no-user-host-in-prompt" ]]; then
+if $HIDE_USER_HOST_IN_PROMPT; then
   echo "psvar[13]= # Don't show user@host in prompt" >> ~/.zshrc
 fi
 
