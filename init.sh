@@ -26,7 +26,7 @@ fi
 
 # zsh
 sudo apt install -y zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search
 # git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
@@ -35,15 +35,18 @@ if $NO_DIRENV; then
 else
   sed -i 's/^plugins=(.*)/plugins=(git direnv kubectl zsh-autosuggestions zsh-history-substring-search)/' ~/.zshrc
 fi
+echo "Installed zsh"
 
 # my custom aliases
 curl -fsSL https://raw.githubusercontent.com/s-h-a-d-o-w/my-os-basics/refs/heads/main/aliases.zsh -o ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/aliases.zsh
+echo "Installed custom aliases"
 
 # nvm
 if ! $NO_NVM; then
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
   source "$HOME/.nvm/nvm.sh"
   nvm install --lts
+  echo "Installed nvm"
 fi
 
 ## pure prompt - HAS TO BE AFTER NVM/NODE INSTALL!
@@ -59,6 +62,7 @@ EOF
 if $HIDE_USER_HOST_IN_PROMPT; then
   echo "psvar[13]= # Don't show user@host in prompt" >> ~/.zshrc
 fi
+echo "Installed pure prompt"
 
 ## zsh mods
 cat >> ~/.zshrc << 'EOF'
@@ -73,3 +77,8 @@ bindkey "${terminfo[kcud1]}" history-substring-search-down
 # misc
 export LS_COLORS="ow=30;101:tw=30;101" # red background for directories with dangerous permissions
 EOF
+echo "Installed zsh mods"
+
+# change default shell to zsh (HAS TO BE LAST, MIGHT PROMPT!)
+echo "Change default shell to zsh..."
+chsh -s $(which zsh)
