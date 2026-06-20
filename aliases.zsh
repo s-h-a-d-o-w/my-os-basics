@@ -4,6 +4,7 @@ alias cz="cat ~/.zshrc"
 alias cb="cat ~/.bashrc"
 alias c=clear
 alias e=explorer.exe . # WSL
+alias gpt="git push --tags"
 alias rmn="rm -rf node_modules"
 alias sb="source ~/.bashrc"
 alias sz="source ~/.zshrc"
