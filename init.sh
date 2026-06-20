@@ -20,6 +20,9 @@ sudo apt upgrade -y
 
 # common tools
 sudo apt install -y vim git
+if ! $NO_DIRENV; then
+  sudo apt install -y direnv
+fi
 
 # zsh
 sudo apt install -y zsh
