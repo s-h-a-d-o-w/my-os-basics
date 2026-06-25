@@ -41,6 +41,13 @@ echo "Installed zsh"
 curl -fsSL https://raw.githubusercontent.com/s-h-a-d-o-w/my-os-basics/refs/heads/main/aliases.zsh -o ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/aliases.zsh
 echo "Installed custom aliases"
 
+# pm - package manager script
+mkdir -p "$HOME/bin"
+curl -fsSL https://gist.github.com/s-h-a-d-o-w/d1be4eb4ecad3576af8fa69c248be615.js -o "$HOME/bin/pm"
+chmod +x "$HOME/bin/pm"
+echo 'export PATH="$HOME/bin:$PATH"' >> ~/.zshrc
+echo "Installed pm"
+
 # nvm
 if ! $NO_NVM; then
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
