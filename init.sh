@@ -49,12 +49,12 @@ if ! $NO_NVM; then
   echo "Installed nvm"
 fi
 
-## pure prompt - HAS TO BE AFTER NVM/NODE INSTALL!
-npm install --global pure-prompt
+## pure prompt
+git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
 cat >> ~/.zshrc << 'EOF'
 
 # pure prompt
-fpath+=("$(npm root -g)/pure-prompt/functions")
+fpath+=($HOME/.zsh/pure)
 autoload -U promptinit; promptinit
 prompt pure
 prompt_newline='%666v' # Single line mode
