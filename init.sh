@@ -43,7 +43,7 @@ echo "Installed custom aliases"
 
 # pm - package manager script
 mkdir -p "$HOME/bin"
-curl -fsSL https://gist.github.com/s-h-a-d-o-w/d1be4eb4ecad3576af8fa69c248be615.js -o "$HOME/bin/pm"
+curl -fsSL https://gist.githubusercontent.com/s-h-a-d-o-w/fdc69a5ecc44b8e49b4ddc456297a89b/raw/f7ff953994553e947e0dd5f8324b4005ee0929a5/pm.sh -o "$HOME/bin/pm"
 chmod +x "$HOME/bin/pm"
 echo 'export PATH="$HOME/bin:$PATH"' >> ~/.zshrc
 echo "Installed pm"
