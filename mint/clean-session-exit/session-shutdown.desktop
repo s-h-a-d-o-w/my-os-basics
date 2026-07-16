@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Shutdown safely
+Exec=/home/andy/bin/session-exit.sh shutdown
+Terminal=false
+Categories=System;

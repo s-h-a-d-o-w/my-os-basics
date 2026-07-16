@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Restart safely
+Exec=/home/andy/bin/session-exit.sh reboot
+Terminal=false
+Categories=System;
