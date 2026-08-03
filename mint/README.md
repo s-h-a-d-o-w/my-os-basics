@@ -14,7 +14,7 @@
 
 - Create e.g. `silence.rules` in `/etc/polkit-1/rules.d`.
 - Use this code to suppress all promps:
-```
+```js
 polkit.addRule(function(action, subject) {
     if (subject.isInGroup("sudo")) {
         return polkit.Result.YES;
@@ -24,4 +24,25 @@ polkit.addRule(function(action, subject) {
 
 ## More reasonable sudo prompts longterm
 
-WIP
+```js
+polkit.addRule(function (action, subject) {
+  // Only auto-approve for a real, locally logged-in admin session.
+  if (!(subject.local && subject.active && subject.isInGroup("sudo"))) {
+      return;
+  }
+
+  const allowedPrefixes = [
+    "com.linuxmint.", // Mint Update Manager
+    "org.aptkit.", // aptkit / aptdaemon (Mint's backend)
+    "org.freedesktop.packagekit.", // PackageKit
+    "org.freedesktop.Flatpak.",
+    "org.gtk.vfs.file-operations", // nemo
+    "in.teejeetech.pkexec.timeshift"
+  ];
+  return allowedPrefixes.some(function (prefix) {
+    return action.id.indexOf(prefix) === 0;
+  })
+    ? polkit.Result.YES
+    : polkit.Result.UNHANDLED;
+});
+```
