@@ -3,6 +3,20 @@
 - Connect files via "online accounts".
 - Add this as a startup program: `nemo "google-drive://<email address>/"`
 
+## SSH Forwarding (dev containers)
+
+```bash
+# ~/.profile
+eval "$(ssh-agent -s)"
+ssh-add 2> /dev/null
+```
+
+Confirm with:
+
+```bash
+ssh -T git@github.com
+```
+
 ## Prevent sudo prompts temporarily
 
 ### sudo
