@@ -24,6 +24,8 @@ polkit.addRule(function(action, subject) {
 
 ## More reasonable sudo prompts longterm
 
+Only polkit rules
+
 ```js
 polkit.addRule(function (action, subject) {
   // Only auto-approve for a real, locally logged-in admin session.
