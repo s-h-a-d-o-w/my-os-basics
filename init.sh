@@ -52,7 +52,8 @@ echo "Installed pm"
 if ! $NO_NVM; then
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
   source "$HOME/.nvm/nvm.sh"
-  nvm install --lts
+  # binary only, no compiling from source
+  nvm install -b --lts
   echo "Installed nvm"
 fi
 
