@@ -5,6 +5,7 @@ alias cb="cat ~/.bashrc"
 alias c=clear
 alias e=explorer.exe . # WSL
 alias gpt="git push --tags"
+alias journalctl="journalctl -e"
 alias n=node
 alias ncdu="ncdu --color=dark"
 alias rmn="rm -rf node_modules"
