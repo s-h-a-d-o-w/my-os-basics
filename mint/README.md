@@ -3,6 +3,17 @@
 - Connect files via "online accounts".
 - Add this as a startup program: `nemo "google-drive://<email address>/"`
 
+## Limit celluloid to 100% volume
+
+1. Create `mpv.conf` somewhere (e.g. in `~/.config`)
+2. Put the following in it:
+
+```
+volume-max=100
+```
+
+3. Make celluloid use it by going to preferences -> config files.
+
 ## SSH Forwarding (dev containers)
 
 ```bash
