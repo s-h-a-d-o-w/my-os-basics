@@ -88,7 +88,6 @@ EOF
 echo "Installed zsh mods"
 
 # change default shell to zsh (HAS TO BE LAST, MIGHT PROMPT!)
-if [[ -t 0 && -t 1 ]]; then
-  echo "Change default shell to zsh..."
-  chsh -s $(which zsh)
-fi
+echo "Change default shell to zsh..."
+chsh -s $(which zsh)
+
