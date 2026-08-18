@@ -1,7 +1,10 @@
 #!/bin/bash
 
+# If `no-zsh` is supplied, we assume that zsh is already installed!
+
 NO_DIRENV=false
 NO_NVM=false
+NO_ZSH=false
 HIDE_USER_HOST_IN_PROMPT=false
 for arg in "$@"; do
   if [[ "$arg" == "no-direnv" ]]; then
@@ -9,6 +12,9 @@ for arg in "$@"; do
   fi
   if [[ "$arg" == "no-nvm" ]]; then
     NO_NVM=true
+  fi
+  if [[ "$arg" == "no-zsh" ]]; then
+    NO_ZSH=true
   fi
   if [[ "$arg" == "no-user-host-in-prompt" ]]; then
     HIDE_USER_HOST_IN_PROMPT=true
@@ -25,17 +31,19 @@ if ! $NO_DIRENV; then
 fi
 
 # zsh
-sudo apt install -y zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search
-# git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-if $NO_DIRENV; then
-  sed -i 's/^plugins=(.*)/plugins=(git kubectl zsh-autosuggestions zsh-history-substring-search)/' ~/.zshrc
-else
-  sed -i 's/^plugins=(.*)/plugins=(git direnv kubectl zsh-autosuggestions zsh-history-substring-search)/' ~/.zshrc
+if ! $NO_ZSH; then
+  sudo apt install -y zsh
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+  git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+  git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search
+  # git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+  if $NO_DIRENV; then
+    sed -i 's/^plugins=(.*)/plugins=(git kubectl zsh-autosuggestions zsh-history-substring-search)/' ~/.zshrc
+  else
+    sed -i 's/^plugins=(.*)/plugins=(git direnv kubectl zsh-autosuggestions zsh-history-substring-search)/' ~/.zshrc
+  fi
+  echo "Installed zsh"
 fi
-echo "Installed zsh"
 
 # my custom aliases
 curl -fsSL https://raw.githubusercontent.com/s-h-a-d-o-w/my-os-basics/refs/heads/main/aliases.zsh -o ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/aliases.zsh
@@ -53,6 +61,7 @@ if ! $NO_NVM; then
   # Migrated to "n" but others depending on this will still supply NO_NVM, at least for now.
   # Use `\n` to use it, since `n` is already used by my node alias.
   curl -L https://raw.githubusercontent.com/mklement0/n-install/stable/bin/n-install | SHELL=zsh bash -s -- -y
+  echo "Installed n"
 fi
 
 ## pure prompt
