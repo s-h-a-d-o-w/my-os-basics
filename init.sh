@@ -50,16 +50,9 @@ echo "Installed pm"
 
 # nvm
 if ! $NO_NVM; then
-  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
-  source "$HOME/.nvm/nvm.sh"
-  # binary only, no compiling from source
-  nvm install -b --lts
-  cat >> ~/.zshrc << 'EOF'
-
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-EOF
-  echo "Installed nvm"
+  # Migrated to "n" but others depending on this will still supply NO_NVM, at least for now.
+  # Use `\n` to use it, since `n` is already used by my node alias.
+  curl -L https://raw.githubusercontent.com/mklement0/n-install/stable/bin/n-install | SHELL=zsh bash -s -- -y
 fi
 
 ## pure prompt
