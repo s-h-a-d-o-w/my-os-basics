@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [[ $EUID -ne 0 ]]; then
+    echo "Run this script as root: sudo $0"
+    exit 1
+fi
+
 NO_DIRENV=false
 NO_NVM=false
 HIDE_USER_HOST_IN_PROMPT=false
@@ -87,5 +92,4 @@ echo "Installed zsh mods"
 
 # change default shell to zsh (HAS TO BE LAST, MIGHT PROMPT!)
 echo "Change default shell to zsh..."
-chsh -s $(which zsh)
-
+sudo chsh -s "$(which zsh)" "$(id -un)"
