@@ -95,6 +95,5 @@ EOF
 echo "Installed zsh mods"
 
 # change default shell to zsh (HAS TO BE LAST, MIGHT PROMPT!)
-echo "Change (default) shell to zsh..."
+echo "Change default shell to zsh..."
 sudo chsh -s "$(which zsh)" "$(id -un)"
-exec zsh
