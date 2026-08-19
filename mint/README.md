@@ -3,6 +3,10 @@
 - Connect files via "online accounts".
 - Add this as a startup program: `nemo "google-drive://<email address>/"`
 
+## Disable USB autosuspend
+
+Add this to boot parameters in "System Administration": `usbcore.autosuspend=-1`
+
 ## Limit celluloid to 100% volume
 
 1. Create `mpv.conf` somewhere (e.g. in `~/.config`)
