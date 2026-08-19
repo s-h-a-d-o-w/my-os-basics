@@ -44,7 +44,6 @@ if ! $NO_ZSH; then
   fi
   echo "Installed zsh"
 fi
-exec zsh
 
 # my custom aliases
 curl -fsSL https://raw.githubusercontent.com/s-h-a-d-o-w/my-os-basics/refs/heads/main/aliases.zsh -o ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/aliases.zsh
@@ -96,5 +95,6 @@ EOF
 echo "Installed zsh mods"
 
 # change default shell to zsh (HAS TO BE LAST, MIGHT PROMPT!)
-echo "Change default shell to zsh..."
+echo "Change (default) shell to zsh..."
 sudo chsh -s "$(which zsh)" "$(id -un)"
+exec zsh
