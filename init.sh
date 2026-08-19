@@ -44,6 +44,7 @@ if ! $NO_ZSH; then
   fi
   echo "Installed zsh"
 fi
+exec zsh
 
 # my custom aliases
 curl -fsSL https://raw.githubusercontent.com/s-h-a-d-o-w/my-os-basics/refs/heads/main/aliases.zsh -o ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/aliases.zsh
