@@ -34,6 +34,8 @@ ssh -T git@github.com
 
 ## Prevent sudo prompts temporarily
 
+... OR JUST INSTALL GAZE RIGHT AWAY!
+
 ### sudo
 
 - `sudo visudo`
@@ -53,27 +55,5 @@ polkit.addRule(function(action, subject) {
 
 ## More reasonable sudo prompts longterm
 
-Only polkit rules
-
-```js
-polkit.addRule(function (action, subject) {
-  // Only auto-approve for a real, locally logged-in admin session.
-  if (!(subject.local && subject.active && subject.isInGroup("sudo"))) {
-      return;
-  }
-
-  const allowedPrefixes = [
-    "com.linuxmint.", // Mint Update Manager
-    "org.aptkit.", // aptkit / aptdaemon (Mint's backend)
-    "org.freedesktop.packagekit.", // PackageKit
-    "org.freedesktop.Flatpak.",
-    "org.gtk.vfs.file-operations", // nemo
-    "in.teejeetech.pkexec.timeshift"
-  ];
-  return allowedPrefixes.some(function (prefix) {
-    return action.id.indexOf(prefix) === 0;
-  })
-    ? polkit.Result.YES
-    : polkit.Result.UNHANDLED;
-});
-```
+- Use gaze but [disabling it on the login screen for keyring unlocking](https://gaze.gundulabs.com/guide/lightdm.html#turning-it-off)!
+- Remove possible temporary setup rules described above
