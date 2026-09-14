@@ -7,18 +7,11 @@
 
 Add this to boot parameters in "System Administration": `usbcore.autosuspend=-1`
 
-## Limit celluloid to 100% volume
+## Limit mpv to 100% volume, among other things (Don't bother with celluloid)
 
-1. Create `mpv.conf` somewhere (e.g. in `~/.config`)
-2. Put the following in it:
+See `mpv.conf`.
 
-```
-volume-max=100
-```
-
-3. Make celluloid use it by going to preferences -> config files.
-
-## SSH Forwarding (dev containers)
+## SSH Forwarding (for devcontainers)
 
 ```bash
 # ~/.profile
