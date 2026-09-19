@@ -1,7 +1,11 @@
+## Startup entries
+
+- flatpak update -y
+
 ## Make Google Drive connect on login
 
 - Connect files via "online accounts".
-- Add this as a startup program: `nemo "google-drive://<email address>/"`
+- Add this as a startup program, so that mounting happens: `nemo "google-drive://<email address>/"`
 
 ## Disable USB autosuspend
 
