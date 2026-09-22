@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# This only lists packages that they user installed themselves. Or at least that's the goal. So that we can look up things that we may have forgotten that we have installed and that might use a lot of space unnecessarily.
 
 set -uo pipefail
 export LC_ALL=C
