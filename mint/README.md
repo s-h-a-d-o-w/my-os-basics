@@ -54,3 +54,9 @@ polkit.addRule(function(action, subject) {
 
 - Use gaze but [disabling it on the login screen for keyring unlocking](https://gaze.gundulabs.com/guide/lightdm.html#turning-it-off)!
 - Remove possible temporary setup rules described above
+
+## Extract AppImage icons
+
+```bash
+./<app>.AppImage --appimage-extract >/dev/null 2>&1 && find squashfs-root -type f \( -iname '*.png' -o -iname '*.svg' -o -iname '*.xpm' \) | grep -Ei 'icon|logo|app' | head -n 20
+```
