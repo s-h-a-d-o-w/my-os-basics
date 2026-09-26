@@ -7,6 +7,7 @@ alias e=explorer.exe . # WSL
 alias gpt="git push --tags"
 alias journalctl="journalctl -e"
 alias kill-port='(){ (lsof -tiTCP:"$1" -sTCP:LISTEN 2>/dev/null || ss -H -ltnp "sport = :$1" 2>/dev/null | sed -n "s/.*pid=\([0-9][0-9]*\).*/\1/p") | xargs -r kill -9 }'
+alias ls-port='(){ ss -H -ltnp "sport = :$1" 2>/dev/null }'
 alias n=node
 alias ncdu="ncdu --color=dark"
 alias rmn="rm -rf node_modules"
