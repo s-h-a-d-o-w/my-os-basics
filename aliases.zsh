@@ -19,6 +19,7 @@ alias vz="vim ~/.zshrc"
 # Based on https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/pulumi
 # "p" instead of "pul" and some `--yes` added
 alias p='pulumi'
+alias pcs='pulumi config get'
 alias pcs='pulumi config set'
 alias pd='pulumi destroy'
 alias pl='pulumi logs -f'
