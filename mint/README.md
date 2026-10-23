@@ -1,6 +1,22 @@
+## Best sudo prompt UX
+
+- [gaze](https://github.com/GunduLabs/gaze) - [disable it on the login screen for keyring unlocking](https://gaze.gundulabs.com/guide/lightdm.html#turning-it-off)!
+
+## Essential tools
+
+- gear lever (yaak, WayVR, LeShade, LosslessCut, GPU-T)
+- flatseal
+- mission center
+- resources
+- k3b
+- meld
+- ncdu
+- simplescreenrecorder
+
 ## Startup entries
 
 - flatpak update -y
+- nemo "google-drive://<email address>/" (see "Make Google Drive connect on login")
 
 ## Make Google Drive connect on login
 
@@ -28,32 +44,6 @@ Confirm with:
 ```bash
 ssh -T git@github.com
 ```
-
-## Prevent sudo prompts temporarily
-
-... OR JUST INSTALL GAZE RIGHT AWAY!
-
-### sudo
-
-- `sudo visudo`
-- Add at the bottom: `<username> ALL=(ALL) NOPASSWD: ALL`
-
-### polkit
-
-- Create e.g. `silence.rules` in `/etc/polkit-1/rules.d`.
-- Use this code to suppress all promps:
-```js
-polkit.addRule(function(action, subject) {
-    if (subject.isInGroup("sudo")) {
-        return polkit.Result.YES;
-    }
-});
-```
-
-## More reasonable sudo prompts longterm
-
-- Use gaze but [disabling it on the login screen for keyring unlocking](https://gaze.gundulabs.com/guide/lightdm.html#turning-it-off)!
-- Remove possible temporary setup rules described above
 
 ## Extract AppImage icons
 
