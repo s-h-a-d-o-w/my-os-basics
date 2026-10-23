@@ -15,8 +15,8 @@
 
 ## Startup entries
 
-- flatpak update -y
-- nemo `"google-drive://<email address>/"` (see "Make Google Drive connect on login")
+- `flatpak update -y`
+- `nemo "google-drive://<email address>/"` (see "Make Google Drive connect on login")
 
 ## Make Google Drive connect on login
 
