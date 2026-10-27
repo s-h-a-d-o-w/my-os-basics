@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# If `no-zsh` is supplied, we assume that zsh is already installed!
+# If `no-zsh` is supplied, we assume that zsh/oh-my-zsh are already installed!
 
 NO_DIRENV=false
 NO_NVM=false
@@ -24,13 +24,13 @@ done
 sudo apt update
 sudo apt upgrade -y
 
-# common tools
+## common tools
 sudo apt install -y vim git
 if ! $NO_DIRENV; then
   sudo apt install -y direnv
 fi
 
-# zsh
+## install zsh
 if ! $NO_ZSH; then
   sudo apt install -y zsh
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
@@ -45,18 +45,18 @@ if ! $NO_ZSH; then
   echo "Installed zsh"
 fi
 
-# my custom aliases
+## my custom aliases
 curl -fsSL https://raw.githubusercontent.com/s-h-a-d-o-w/my-os-basics/refs/heads/main/aliases.zsh -o ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/aliases.zsh
 echo "Installed custom aliases"
 
-# pm - package manager script
+## pm - package manager script
 mkdir -p "$HOME/bin"
 curl -fsSL https://gist.githubusercontent.com/s-h-a-d-o-w/fdc69a5ecc44b8e49b4ddc456297a89b/raw/f7ff953994553e947e0dd5f8324b4005ee0929a5/pm.sh -o "$HOME/bin/pm"
 chmod +x "$HOME/bin/pm"
 echo 'export PATH="$HOME/bin:$PATH"' >> ~/.zshrc
 echo "Installed pm"
 
-# nvm
+## nvm
 if ! $NO_NVM; then
   # Migrated to "n" but others depending on this will still supply NO_NVM, at least for now.
   # Use `\n` to use it, since `n` is already used by my node alias.
@@ -79,6 +79,9 @@ if $HIDE_USER_HOST_IN_PROMPT; then
 fi
 echo "Installed pure prompt"
 
+## enable oh-my-zsh auto update
+sed -i "s/^# \(zstyle ':omz:update' mode auto\)/\1/" ~/.zshrc
+
 ## zsh mods
 cat >> ~/.zshrc << 'EOF'
 
@@ -94,6 +97,6 @@ export LS_COLORS="ow=30;101:tw=30;101" # red background for directories with dan
 EOF
 echo "Installed zsh mods"
 
-# change default shell to zsh (HAS TO BE LAST, MIGHT PROMPT!)
+## change default shell to zsh (HAS TO BE LAST, MIGHT PROMPT!)
 echo "Change default shell to zsh..."
 sudo chsh -s "$(which zsh)" "$(id -un)"
