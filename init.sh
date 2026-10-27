@@ -79,8 +79,9 @@ if $HIDE_USER_HOST_IN_PROMPT; then
 fi
 echo "Installed pure prompt"
 
-## enable oh-my-zsh auto update
+## enable oh-my-zsh auto update but with 10 day cooldown
 sed -i "s/^# \(zstyle ':omz:update' mode auto\)/\1/" ~/.zshrc
+sed -i '1izstyle \':omz:update\' cooldown 10' ~/.zshrc
 
 ## zsh mods
 cat >> ~/.zshrc << 'EOF'
