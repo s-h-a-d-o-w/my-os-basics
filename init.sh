@@ -25,7 +25,7 @@ sudo apt update
 sudo apt upgrade -y
 
 ## common tools
-sudo apt install -y vim git
+sudo apt install -y vim git ripgrep
 if ! $NO_DIRENV; then
   sudo apt install -y direnv
 fi
